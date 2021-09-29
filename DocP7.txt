@@ -1,0 +1,5 @@
+p7
+
+p7Clean(1) rep  Forecast automatizado: resultados de error
+Script desglosa resultados del modelo, imprime el excel
+

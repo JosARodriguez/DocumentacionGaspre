@@ -1,0 +1,6 @@
+p10
+
+p10_automatComparativo rep  Selección comparativo automatizado
+Script muestra la tabla del resultado de mover cociente en -.01 y moverlo al precio óptimo, muestra 
+cambios en precio, margen, venta, ganancia
+También muestra en una misma escala las curvas de demanda y ganancia de hasta máximo 10 estaciones, incluyendo la de interés

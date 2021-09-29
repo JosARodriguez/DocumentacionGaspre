@@ -1,0 +1,38 @@
+p2
+
+p2Clean(0) rep  Añade al reporte correlaciones de venta vs cociente de precios
+
+nivel ????
+
+Se lee el catálogo de estaciones de db precios, tabla recomCatalague
+Se recupera el alias y el número de estación para cada estación
+
+Segundo argumento de segunda instancia de list.files ??????
+detectar los documentos
+
+
+
+
+
+
+functionalCoc función que define los cocientes, toma como argumento bm, prod prod es el tipo de producto
+bm es de donde se toman los datos supongo. Se toman los cocientes con promedios y los cocientes individuales. Como se ordenan los competidores???
+se ordenan por distancia
+
+cocChaEsp ???? 
+
+en el comentario de realiza corte de tiempo se quitan fechas dependiendo si se está en pandamia antes de pandemia o el total
+
+por qué se hace la distinción entre pre y post pandemia????
+en los cocientes donde se definen premium_x etc
+se hace desde el paso 1
+
+
+p2Clean(1) Calcula correlaciones y regresiones vs competidores uno a uno y vs top n estaciones, lo guarda en csv
+
+p2Clean(2) Trabaja varias combinaciones de estaciones (combinaciones definidas de manera estratégica para evitar desgaste computacional
+de explorar todas las combinaciones posibles)
+
+p2Clean(3) Elige combinación óptima e imprime en AWS (sql)
+
+p2Clean(4) rep  Añade al reporte de correlaciones venta vs cociente de precios

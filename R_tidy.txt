@@ -1,0 +1,265 @@
+
+https://r4ds.had.co.nz
+
+Data transformation
+
+Tibbles are data frames that work better in tidyverse. 
+
+abbreviations under the column names of a tibble describe the type of each variable. 
+
+dttm- date time
+lgl- logical vector
+fctr-  factors which R uses to represent categorical variables with fixed possible values.
+
+Basics of dplyr.
+
+filter()- pick observations by their values
+arrange()- reorder the rows
+select()- pick variables vy their names
+mutate()- create new variables with funcitons of existing variables
+summarise()- collapse many values down to a single summary
+
+These can be used in conjunction with group_by() which changes the scope of each funciton from operating on the entire dataset
+to operating on it group-by-group.
+
+The first argument is a data frame.
+The subsequent arguments describe what to do with the data frame, using the varaible names(without quotes)
+The result is a new data frame
+
+dplyr functions dont modify their inputs so to save the result one needs to use the assignment operator
+
+new_obj <- filter(old_obj,filter)
+
+when using comparisons of float numbers (i.e. sqrt(2)^2 == 2) the use of near() function can help to deal with the lack
+of precision in a computer's calculations.
+
+A way to deal with filtering in a range is using x %in% y
+
+is.na()
+
+ARRANGE()
+
+takes a data frame and a set of column names to order by. If more than one column is given it will be used to break ties
+in the arrangement of the old column. 
+
+it will by deafult arrange in ascending order, the desc(column_name) function can be used 
+missing values are always sorted at the end
+
+SELECCT()
+
+select(data_set,column_namei:column_namej) will select all columns between(including) columns i and j
+
+Helper functions that can be used with select()
+
+starts_with("string")
+ends_with("string")
+contains("string")
+matches()
+num_range()
+
+a variant of select is the rename() function which takes a data set and old_column_name = new_column_name
+
+MUTAUTE()
+
+it allows os to add new columns that are functions of the existing functions
+
+adds new columns at the end of the dataset 
+if only the new variables are of interest one can use the transmute() function
+
+SUMMARISE()
+
+collapses a data frame to a single row
+
+PIPES
+
+%>% focuses on transformations, not what is being transformed. %>% can be thought of as a "then".
+
+COUNTS
+
+GROUPING BY MULTIPLE VARIABLES
+
+each summary peels off one level of the grouping.  
+
+grouping is most useful in conjunction with a summarise(), but you can also do convenient operations with mutate()
+and filter()
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+SECTION 8
+
+projects
+
+RStudio projects give you a solid workflow that will serve you well in the future
+
+Create an RStudio project for each data analysis project
+
+keep data files there
+
+keep scripts there
+
+save outputs there
+
+only ever use relative paths
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+SECTION 9-DATA WRANGLING
+
+Import -> Tidy -> Transform -> Visualise -> Model -> (repeat) -> Communicate
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+SECTION 10
+
+TIBBLES
+
+Tibbles are like data frames, but better. 
+
+
+as_tibble() coerces data frame to a tibble
+
+tibble() creates new tibble from vectors
+
+tibbles never change the type of the inputs, names of the variables and cannot create row names.
+
+tribble() allows to create a tibble without having to have the data already in individual vectors. Fills the tibble with code
+
+Tibbles print only the first 10 rows an all the columns that fit on screen. Print settings are customizable.
+
+Subsetting
+
+$ [[ 
+
+[[ can extract by name or position
+
+$ extracts by name
+
+if x is a column of the tibble t we can access it via
+
+	t$x
+
+To use this in a pipe we need to use the special placeholder "."
+
+	t %>% .$x
+
+
+#####################################################################################################################
+#####################################################################################################################
+
+SECTION 11
+
+Data Import
+
+Here we´ll use the readr package of tidyverse
+
+read_csv() reads comma delimited files
+read_csv2() reads semicolon separated files
+read_tsv() reads tab delimited files
+read_delim() reads in files with any delimiter
+
+read_fwf() reads fixed width lines
+
+read_log() reads Apache style log files
+
+in order to not consider the first row of the file as the name for the columns we use  col_names = FALSE
+
+\n is a shortcut for adding a new line
+
+parse_*() take a character vector and return a more specialised vector like a logical, integer or date
+
+Writing to a file
+
+readr also comes with two useful functions for writing data back to disk:
+
+write_csv()
+write_tsv()
+
+in order to export a csv file to Excel use
+
+write_excel_csv() 
+
+these functions take as arguments x, the data frame to save and path, the location to save it. 
+
+readxl reads excel files
+
+DBI along with a database specific backend allows you to run SQL queries against a database and return a data frame.
+
+for hierarchical data jsonlite for json and xml2 for XML
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+SECTION 12-trivial
+
+Tidy data
+
+tidy- particular way of organising data.
+tidyr package from tidyverse
+
+Rules that make a dataset tidy	
+	
+	each variable must have its own column
+	each observation must have its own row
+	each value must have its on cell
+
+put each data set in a tibble
+put each variable in a column
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+SECTION 13
+
+Relational data
+
+Mutating joins - add new variables to one data frame from matching observations in another
+
+combines variables from two tables. matches observations by their keys. copies across variables from one table to the other.
+
+
+Filtering joins - filter observations from one data frame based on wheter or not they match an observation in the other table
+
+Set operations - treat observations as it they were set elements
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+SECTION 16
+
+Dates and times
+
+in order to recover dates from strings the following functions can be used
+
+ymd("yyyy-mm-dd")
+mdy("Month 31st, yyyy")
+dmy("31-Mon-yyyy")
+
+they all return in the "yyyy-mm-dd" format
+
+ymd_hms() do what one would expect when the string taken as argument also has a time component
+
+mdy_hm()
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+SECTION 18
+
+Pipes
+
+powerful tool for clearly expressing a sequence of multiple operations. 
+
+pipes help to write code in a way that is easier to read and understand.
+
+paste() and paste0() take characters as arguments and return a string where the different arguments are pasted. Example
+
+paste("my","example")
+"my example"
+sep = "" changes the separation between arguments
+collapse = "" combines vector elements into a single character string.
+
+
+commandArgs() provides access to a copy of the command-line arguments supplied when this R session was invoked.??

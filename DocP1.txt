@@ -1,0 +1,27 @@
+p1
+
+p1Clean(1) Toma como insumo archivo de ventas y genera primer explotratorio sobre planilla de excel, además de capturar precios de venta
+de competidores usando archivo xml
+
+Primero se inicializan las variables ptm, sourcingProd, leido, anadeRec y attachL
+
+ptm-mide el tiempo del proceso
+
+execProd,sourcingProd- Variables lógicas que se inicializan como TRUE (FALSE si no se quiere ejecutar las secciones abajo indicadas)
+
+Después se llama en la sección de pasos post-construcción del modelo. el valor de TRUE hace que se corran los scripts scriptPrecRecA y p8_p9
+
+
+leido<- Variable lógica que se puede inicializar como FALSE o TRUE
+
+En caso de ser falso se corre el withinSelect para agregar la información de municipios
+
+anadeRec- Variable lógica que en caso de ser TRUE lee precios de la colección "sale" de mongo y añade ventas recientes que pudiera haber subido el usuario
+
+attachL<-'B' ????
+
+insertaGG<- function  es una función que usamos para insertar imagenes al reporte de Excel
+insertaGG0 parece ser prácticamente igual que la anterior
+
+
+stations<-mongolite::mongo   leemos las bases de datos precios, test,recomCatalague

@@ -1,0 +1,3 @@
+p3
+
+p3Clean(1)  Trabaja ajuste lineal sobre el reporte de excel

@@ -1,0 +1,5 @@
+p5
+
+p5_Clean(1) Generación de variables: enfoque modelos lineales RLM
+
+inicioo, lo de particChalco
